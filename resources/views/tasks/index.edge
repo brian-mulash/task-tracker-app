@@ -4,16 +4,25 @@
 
 @section('body')
 
+
    <main>
       <div class="form-container">
-         <legend>Create your todo list</legend>
          <form action="/tasks" method="POST">
             {{ csrfField() }}
-            <input type="text" name="title" placeholder="Create tasks">
-            <button type="submit">Add</button>
+
+            <div class="form-control">
+               <input 
+                  type="text" 
+                  name="title" 
+                  placeholder="Create tasks"
+                  class="input {{ flashMessages.has('errors.title') ? 'is-danger' : '' }}"
+                  value="{{ flashMessages.get('title') || '' }}"
+               >
+               <button type="submit">Add</button>
+            </div>
 
             @if(flashMessages.has('errors.title'))
-               <small> 
+               <small class="danger"> 
                {{ flashMessages.get('errors.title') }}
                </small>
             @endif
