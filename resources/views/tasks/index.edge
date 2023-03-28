@@ -3,5 +3,22 @@
 @set('title', 'Home Page')
 
 @section('body')
-   index home page
+
+   <main>
+      <div class="form-container">
+         <legend>Create your todo list</legend>
+         <form action="/tasks" method="POST">
+            {{ csrfField() }}
+            <input type="text" name="title" placeholder="Create tasks">
+            <button type="submit">Add</button>
+
+            @if(flashMessages.has('errors.title'))
+               <small> 
+               {{ flashMessages.get('errors.title') }}
+               </small>
+            @endif
+         </form>
+      </div>
+   </main>
+
 @endsection
