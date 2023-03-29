@@ -37,11 +37,15 @@ header {
 main {
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 main .form-container {
   background-color: #ffffff00;
   margin-top: 20px;
+  text-align: center;
 }
 
 main .form-container form {
@@ -67,6 +71,15 @@ main .form-container form input.is-danger {
   border: 1px solid red;
 }
 
+/* notification */
+small.success {
+  color: rgb(0, 199, 0);
+}
+
+small.notification {
+  text-align: center;
+}
+
 small.danger {
   color: red;
 }
@@ -79,3 +92,13 @@ main .form-container form button {
   cursor: pointer;
 }
 
+/* tasks-box */
+
+.completed {
+  text-decoration: line-through rgb(0, 128, 64);
+  
+}
+
+.checked {
+  background: blue;
+}

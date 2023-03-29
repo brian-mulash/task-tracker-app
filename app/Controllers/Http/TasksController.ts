@@ -4,10 +4,13 @@ import Task from 'App/Models/Task'
 
 export default class TasksController {
    public async index ({view}: HttpContextContract) {
-      return view.render('tasks/index')
+      const tasks = await Task.all()
+      
+      return view.render('tasks/index', { tasks })
    }
 
-   public async store ({request, response}: HttpContextContract) {
+   /* create */
+   public async store ({request, response, session}: HttpContextContract) {
 
       const validationSchema = schema.create({
          title: schema.string({trim: true}, [
@@ -26,6 +29,31 @@ export default class TasksController {
       await Task.create({
          title: validatedData.title
       })
+
+      session.flash('notification', 'Task Added')
+
+      return response.redirect('back')
+   }
+
+   /* update */
+   public async update ({response, request, session, params}: HttpContextContract) {
+      const task = await Task.findOrFail(params.id)
+
+      task.isCompleted = !!request.input('completed')
+      await task.save()
+
+      session.flash('notification', 'Task is updated')
+
+      return response.redirect('back')
+   }
+
+   /* delete */
+   public async delete ({response, session, params}: HttpContextContract) {
+      const task = await Task.findOrFail(params.id)
+
+      await task.delete()
+
+      session.flash('notification', 'Task is deleted!')
 
       return response.redirect('back')
    }

@@ -4,7 +4,6 @@
 
 @section('body')
 
-
    <main>
       <div class="form-container">
          <form action="/tasks" method="POST">
@@ -27,6 +26,47 @@
                </small>
             @endif
          </form>
+
+         @if( flashMessages.has('notification') )
+            <small class="success notification">{{ flashMessages.get('notification') }}</small>
+         @endif
+      </div>
+
+      <div class="tasks-box">
+         <div class="table">
+            @each(task in tasks)
+               <div class="tr">
+                  <div class="td task-is-complited">
+                     <form action="{{ `/tasks/${task.id}?_method=PATCH` }}" method="POST">
+                        {{ csrfField() }}
+                        <label for="completed" class="checkbox">
+                           <input 
+                              type="checkbox" 
+                              name="completed"
+                              onchange="this.form.submit()"
+                              class="{{ task.isCompleted ? 'checked' : '' }}"
+                           >
+                        </label>
+                     </form>
+                  </div>
+                  <div class="td task-content {{ task.isCompleted ? 'completed' : '' }}">
+                     {{ task.title }}
+                  </div>
+                  <div class="td delete-task">
+                     <form action="{{ `/tasks/${task.id}?_method=DELETE` }}" method="POST">
+                        {{ csrfField() }}
+                        <button type="submit" class="delete-btn">
+                           Delete
+                        </button>
+                     </form>
+                  </div>
+               </div>
+            @else()
+               <div class="tr">
+                  <div class="td">No task!</div>
+               </div>
+            @endeach
+         </div>
       </div>
    </main>
 
