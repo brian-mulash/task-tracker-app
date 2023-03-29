@@ -15,8 +15,16 @@
       <div class="header-container">
          <a href="/" class="logo">Tasking App</a>
    
-         <div class="menu">
-            
+         <div class="nav-menu">
+            @if(auth.isLoggedin)
+               <a href="#">{{ auth.user.name }}</a>
+
+               <a href="/logout">Logout</a>
+            @else
+               <a href="/login">Login</a>
+
+               <a href="/register">Register</a>
+            @endif
          </div>
       </div>
    </header>
