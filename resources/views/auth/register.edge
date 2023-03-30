@@ -3,5 +3,64 @@
 @set('title', 'Register')
 
 @section('body')
-   register page
+   <main>
+      <div class="register-form">
+         <form action="/register", method="POST">
+            {{ csrfField() }}
+            
+            <legend>Register</legend>
+            <div class="username">
+               <label for="username">username</label>
+               <input 
+                  type="text"
+                  name="username"
+                  class="input {{ flashMessages.get('errors.username') ? 'is-danger' : ''}}"
+               >
+               @if(flashMessages.has('errors.username'))
+                  <small class="danger">{{ flashMessages.get('errors.username') }}</small>
+               @endif
+            </div>
+
+            <div class="email">
+               <label for="email">email</label>
+               <input 
+                  type="email"
+                  name="email"
+                  class="input {{ flashMessages.get('errors.email') ? 'is-danger' : ''}}"
+               >
+               @if(flashMessages.has('errors.email'))
+                  <small class="danger">{{ flashMessages.get('errors.email') }}</small>
+               @endif
+            </div>
+
+            <div class="password">
+               <label for="password">password</label>
+               <input 
+                  type="password"
+                  name="password"
+                  class="input {{ flashMessages.get('errors.password') ? 'is-danger' : ''}}"
+               >
+               @if(flashMessages.has('errors.password'))
+                  <small class="danger">{{ flashMessages.get('errors.password') }}</small>
+               @endif
+            </div>
+
+            <div class="password-confirmation">
+               <label for="password">password confirmation</label>
+               <input 
+                  type="password"
+                  name="password_confirmation"
+                  class="input {{ flashMessages.get('errors.password_confirmation') ? 'is-danger' : ''}}"
+               >
+               @if(flashMessages.has('errors.password_confirmation'))
+                  <small class="danger">{{ flashMessages.get('errors.password_confirmation') }}</small>
+               @endif
+            </div>
+
+            <button type="submit">
+               Register
+            </button>
+         </form>
+      </div>'
+   </main>
 @endsection

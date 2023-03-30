@@ -114,3 +114,16 @@ main .form-container form button {
 .checked {
   background: blue;
 }
+
+/* auth pages */
+form .username, .email, .password, .password-confirmation {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.user-email {
+  color: #fff;
+  margin-right: 60px;
+}

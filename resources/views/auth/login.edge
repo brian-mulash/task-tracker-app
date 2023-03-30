@@ -3,5 +3,42 @@
 @set('title', 'Login')
 
 @section('body')
-   Login page
+   <main>
+      <div class="register-form">
+         <form action="/login", method="POST">
+            {{ csrfField() }}
+
+            <legend>Login</legend>
+
+            @if(flashMessages.has('notification'))
+               <small class="is-danger">
+                  {{ flashMessages.get('notification') }}
+               </small>
+            @endif
+            
+            <div class="email">
+               <label for="email">email</label>
+               <input 
+                  type="email"
+                  name="email"
+                  required
+                  value="{{ flashMessages.get('email') || '' }}"
+               >
+            </div>
+
+            <div class="password">
+               <label for="password">password</label>
+               <input 
+                  type="password"
+                  name="password"
+                  required
+               >
+            </div>
+
+            <button type="submit">
+               Login
+            </button>
+         </form>
+      </div>'
+   </main>
 @endsection

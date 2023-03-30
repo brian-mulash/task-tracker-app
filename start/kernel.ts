@@ -25,6 +25,7 @@ Server.middleware.register([
   () => import('@ioc:Adonis/Addons/Shield'),
   () => import('App/Middleware/SilentAuth'),
 
+
 ])
 
 /*
@@ -45,4 +46,5 @@ Server.middleware.register([
 */
 Server.middleware.registerNamed({
   auth: 'App/Middleware/Auth',
+  guest: 'App/Middleware/Guest'
 })
