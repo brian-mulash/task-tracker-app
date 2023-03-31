@@ -116,14 +116,79 @@ main .form-container form button {
 }
 
 /* auth pages */
+.login-form, .register-form {
+  width: 200px;
+}
+
+form {
+  margin-top: 10px;
+}
+
+form .is-danger {
+  color: red;
+}
+
+legend {
+  color: rgb(0, 128, 64);
+  font-size: 20px;
+  font-weight: bold;
+}
+
 form .username, .email, .password, .password-confirmation {
   display: flex;
   flex-direction: column;
-
+  margin-top: 20px;
 }
 
+
+
+.control input {
+  padding: 8px 10px;
+  border: 1px solid gray;
+}
 
 .user-email {
   color: #fff;
   margin-right: 60px;
+}
+
+form .submit-btn {
+  width: 100%;
+  color: #fff;
+  background-color: rgb(0, 128, 64);
+  padding: 10px 10px;
+  margin-top: 15px;
+  border: none;
+}
+
+/* --------------home--------------- */
+
+.tasks-box {
+  margin-top: 30px;
+}
+
+.table {
+  margin-top: 15px;
+}
+
+.tasks-box .table .tr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid ;
+  height: 70px;
+  width: 500px;
+  padding: 10px;
+}
+
+.delete-btn {
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.no-task {
+  color: rgb(153, 153, 1);
 }

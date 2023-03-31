@@ -4,7 +4,7 @@
 
 @section('body')
    <main>
-      <div class="register-form">
+      <div class="login-form">
          <form action="/login", method="POST">
             {{ csrfField() }}
 
@@ -16,7 +16,7 @@
                </small>
             @endif
             
-            <div class="email">
+            <div class="email control">
                <label for="email">email</label>
                <input 
                   type="email"
@@ -26,7 +26,7 @@
                >
             </div>
 
-            <div class="password">
+            <div class="password control">
                <label for="password">password</label>
                <input 
                   type="password"
@@ -35,7 +35,7 @@
                >
             </div>
 
-            <button type="submit">
+            <button type="submit" class="submit-btn">
                Login
             </button>
          </form>
